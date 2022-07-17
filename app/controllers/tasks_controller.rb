@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   
   def index
+    @task = Task.new
     tasks = Task.all
     
     @task_false = []
@@ -8,10 +9,6 @@ class TasksController < ApplicationController
     
     tasks.each {|task| @task_false.push(task) if task.status == false }
     tasks.each {|task| @task_true.push(task) if task.status == true }
-  end
-  
-  def new
-    @task = Task.new
   end
   
   def create
@@ -27,7 +24,7 @@ class TasksController < ApplicationController
   def show
     tasks = Task.all
     
-    # false true　それぞれの空配列を作る
+    # false true　それぞれを入れう空配列を作る
     @task_false = []
     @task_true = []
     

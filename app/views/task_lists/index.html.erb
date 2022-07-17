@@ -1,0 +1,3 @@
+<% @lists.each do |list| %>
+  <div><%= link_to list.content, task_lists_path(@list) %></div>
+<% end %>

@@ -1,4 +1,10 @@
 <%= render 'layouts/new' %>
+<%= form_with(local: true) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+    
+    <%= f.submit "作成", class: "btn btn-primary" %>
+<% end %>
 
 <h1>未処理タスク</h1>
 <% @task_false.each do |task| %>
@@ -8,14 +14,3 @@
 <% @task_true.each do |task| %>
   <div><%= check_box_tag '', '', task.status, {'data-id' => task.id} %> <%= task.content %></div>
 <% end %>
-
-
-<!-- jqueryの機能を使ってチェックボックスの制御を行う -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-        $("input[type=checkbox]").click(function() {
-            $.post('/tasks/'+$(this).data('id')+'/toggle')
-        })
-    })
-</script>
