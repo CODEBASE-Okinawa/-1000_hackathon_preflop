@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   root 'application#hello'
-  get    '/task_create',   to: 'tasks#new'
-  post   '/task_create', to: 'tasks#create'
+  get 'tasks/show'
+  post '/tasks/:id/toggle', to: 'tasks#toggle'
   resources :tasks
   resources :users
 end
