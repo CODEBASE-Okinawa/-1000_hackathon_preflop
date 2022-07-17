@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   
   def index
+    @task = Task.new
     tasks = Task.all
     
     @task_false = []
@@ -8,10 +9,6 @@ class TasksController < ApplicationController
     
     tasks.each {|task| @task_false.push(task) if task.status == false }
     tasks.each {|task| @task_true.push(task) if task.status == true }
-  end
-  
-  def new
-    @task = Task.new
   end
   
   def create
