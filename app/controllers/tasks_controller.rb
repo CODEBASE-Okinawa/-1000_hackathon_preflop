@@ -49,8 +49,8 @@ class TasksController < ApplicationController
     private
     
       def task_params
-        # debugger
         params.require(:task).permit(:content)
+        binding.irb
       end
       
 end

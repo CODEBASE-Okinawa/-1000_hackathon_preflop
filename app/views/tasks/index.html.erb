@@ -1,5 +1,5 @@
 <%= render 'layouts/new' %>
-<%= form_with(local: true) do |f| %>
+<%= form_with(model: @task, local: true) do |f| %>
     <%= f.label :content %>
     <%= f.text_field :content %>
     
