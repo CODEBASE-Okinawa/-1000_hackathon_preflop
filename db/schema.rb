@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2022_07_17_085409) do
 
   create_table "task_lists", force: :cascade do |t|
@@ -27,8 +26,6 @@ ActiveRecord::Schema.define(version: 2022_07_17_085409) do
     t.integer "task_list_id", null: false
     t.index ["task_list_id"], name: "index_tasks_on_task_list_id"
   end
-  
-  add_foreign_key "tasks", "task_lists"
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -39,4 +36,5 @@ ActiveRecord::Schema.define(version: 2022_07_17_085409) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "tasks", "task_lists"
 end

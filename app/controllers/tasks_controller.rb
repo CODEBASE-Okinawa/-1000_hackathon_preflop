@@ -36,6 +36,9 @@ class TasksController < ApplicationController
   
   # taskのチェックボックスクリック時にステータスを変更
   def toggle
+    # b = session[:user_id]
+    # binding.irb
+    # @user = User.find(params[:id])
     @task = Task.find(params[:id])
     # task_list = @task.task_list_id
     
@@ -45,7 +48,9 @@ class TasksController < ApplicationController
     
     # render nothing: true
     # 上記のrenderはrails5から使えなくなったので下記の方法を利用
+
     redirect_to task_list_path(@task.task_list_id)
+
   end
   
     private

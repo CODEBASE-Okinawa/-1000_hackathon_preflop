@@ -8,3 +8,4 @@
 <% @task_true.each do |task| %>
   <div><%= check_box_tag '', '', task.status, {'data-id' => task.id} %> <%= task.content %></div>
 <% end %>
+<h1><%= p @user %></h1>
