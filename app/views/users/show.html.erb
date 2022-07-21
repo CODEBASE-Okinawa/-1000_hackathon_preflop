@@ -1,12 +1,11 @@
-<%= link_to "sign up", signup_path, class: "btn btn-lg btn-primary"  %>
+<%= render 'layouts/new' %>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-</div>
+<h1>未処理タスク</h1>
+<% @task_false.each do |task| %>
+  <div><%= check_box_tag '', '', task.status, {'data-id' => task.id} %> <%= task.content %></div>
+<% end %>
+<h1>終了タスク</h1>
+<% @task_true.each do |task| %>
+  <div><%= check_box_tag '', '', task.status, {'data-id' => task.id} %> <%= task.content %></div>
+<% end %>
+<%= p @user.id %>
