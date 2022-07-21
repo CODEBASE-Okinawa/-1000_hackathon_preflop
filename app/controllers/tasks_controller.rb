@@ -12,10 +12,11 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = Task.new(task_params)
-    # debugger
+    @list = TaskList.find(params[:task][:id])
+    @task = @list.tasks.build(task_params)
+
     if @task.save
-      redirect_to tasks_path
+      redirect_to task_list_path(@list.id)
     else
       render 'new'
     end
@@ -24,7 +25,7 @@ class TasksController < ApplicationController
   def show
     tasks = Task.all
     
-    # false true　それぞれの空配列を作る
+    # false true　それぞれを入れう空配列を作る
     @task_false = []
     @task_true = []
     
@@ -39,6 +40,7 @@ class TasksController < ApplicationController
     # binding.irb
     # @user = User.find(params[:id])
     @task = Task.find(params[:id])
+    # task_list = @task.task_list_id
     
     # タスクstatusの値を反対に返す
     @task.status = !@task.status
@@ -46,13 +48,14 @@ class TasksController < ApplicationController
     
     # render nothing: true
     # 上記のrenderはrails5から使えなくなったので下記の方法を利用
-    redirect_to user_path(@user)
+
+    redirect_to task_list_path(@task.task_list_id)
+
   end
   
     private
     
       def task_params
-        # debugger
         params.require(:task).permit(:content)
       end
       
