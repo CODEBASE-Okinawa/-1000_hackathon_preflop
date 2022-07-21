@@ -17,7 +17,7 @@
     <script type="text/javascript">
         $(function() {
             $("input[type=checkbox]").click(function() {
-                $.post('/tasks/'+$(this).data('id')+'/toggle')
+                $.post('/task/'+$(this).data('id')+'/toggle')
             })
         })
     </script>

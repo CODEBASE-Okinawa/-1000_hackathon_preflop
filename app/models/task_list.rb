@@ -1,3 +1,4 @@
 class TaskList < ApplicationRecord
-    has_many :task
+  validates :content, presence: true
+  has_many :tasks
 end
